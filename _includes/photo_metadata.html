@@ -1,0 +1,31 @@
+{% if image.camera %}
+  {% assign camera = site.data.tools[image.camera] %}
+  <a href="{{ camera.link }}">{{ camera.name }}</a>
+{% endif %}
+{% if image.lens %}
+  {% assign lens = site.data.tools[image.lens] %}
+  {% if camera %}
+    with
+  {% endif %}
+  <a href="{{ lens.link }}">{{ lens.name }}</a>
+{% endif %}
+<br>
+{% if image.aperture %}
+  f{{ image.aperture }}
+{% endif %}
+{% if image.focal %}
+  {% if image.aperture %}&bull;{% endif %}
+  {{ image.focal  }}mm
+{% endif %}
+{% if image.shutter %}
+   {% if image.aperture or image.focal %}&bull;{% endif %}
+   {{ image.shutter }}s
+{% endif %}
+{% if image.iso %}
+   {% if image.aperture or image.shutter or image.focal %}&bull;{% endif %}
+   ISO {{ image.iso }}
+{% endif %}
+{% if image.type %}
+  {% if image.aperture or image.shutter or image.iso or image.focal %}&bull;{% endif %}
+  {{ image.type }}
+{% endif %}

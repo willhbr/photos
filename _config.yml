@@ -1,0 +1,49 @@
+title: Photography by Will Richardson
+author: Will Richardson
+description: Will's photos
+baseurl: ""
+url: "https://photography.willhbr.net"
+
+image_date: "%F.jpeg"
+date_format: "%B %-d, %Y"
+timezone: Australia/Sydney
+
+paginate: 15
+paginate_path: "/page/:num"
+plugins: [jekyll-paginate]
+
+permalink: :year-:month-:day/
+
+feeds:
+  rss_url: "/feed.xml"
+  json_url: "/feed.json"
+
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: post
+      type: article
+  - scope:
+      type: gear
+    values:
+      layout: gear
+      type: website
+
+exclude:
+  - .jj
+  - CNAME
+  - Containerfile.dev
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - pods.yaml
+  - scripts
+
+collections:
+  gear:
+    output: true
+
+
+sass:
+  style: compressed

@@ -1,0 +1,30 @@
+<article>
+  <div class="metadata">
+    {% if post.location %}
+      {% assign location_parts = post.location | split:',' %}
+      {% if location_parts.size == 2 %}
+      <h1><a href="{{ post.url }}">{{ location_parts[0] }}
+          <span class="sub">{{ location_parts[1] | join:',' }}</span></a></h1>
+      {% else %}
+        <h1><a href="{{ post.url }}">{{ post.location }}</a></h1>
+      {% endif %}
+      <h2>{{ post.date | date: site.date_format }}
+        {% if post.images.size > 1 %} &bull; {{ post.images.size }} photos{% endif %}</h2>
+    {% else %}
+      <h1><a href="{{ post.url }}">{{ post.date | date: site.date_format }}</a></h1>
+      {% if post.images.size > 1 %}
+        <h2>{{ post.images.size }} photos</h2>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% for image in post.images %}
+    <div class="img-container">
+      <img src="{{ "/photos/" | append: image.file | absoluteurl }}" loading="lazy">
+      <p>
+        {% include photo_metadata.html %}
+      </p>
+    </div>
+  {% endfor %}
+
+  {{ post.content }}
+</article>

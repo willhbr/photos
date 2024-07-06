@@ -1,0 +1,30 @@
+---
+layout: null
+---
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "{{ site.title | xml_escape }}",
+  "home_page_url": "{{ "/" | absolute_url }}",
+  "feed_url": "{{ site.feeds.json_url | absolute_url }}",
+  "description": {{ site.description | jsonify }},
+  "icon": "{{ "/apple-touch-icon.png" | absolute_url }}",
+  "favicon": "{{ "/favicon.ico" | absolute_url }}",
+  "expired": false,
+  "language": "en",
+  "items": [
+  {%- for post in site.posts limit:20 -%}
+    {
+      "id": "{{ post.url | absolute_url | sha1 }}",
+      {%- capture title -%}{%- if post.location -%}{{ post.location | xml_escape }} • {% endif -%} {{ post.date | date: site.date_format | xml_escape }}{%- endcapture -%}
+      "title": {{ title | jsonify }},
+      {%- capture content -%}{% include feed_post.html %}{%- endcapture -%}
+      "content_html": {{ content | jsonify }},
+      "url": "{{ post.url | absolute_url }}",
+      {%- if post.images.size > 1 -%}"image": {{ post.images[0].file | prepend: "/photos/" | absolute_url | jsonify }},{%- endif -%}
+      "date_published": "{{ post.date | date_to_xmlschema }}",
+      "date_modified": "{{ post.date | date_to_xmlschema }}",
+      "authors": [{"name":{% if post.author %}"{{ post.author }}"{% else %}"{{ site.author }}"{% endif %}}]
+    }{%- if forloop.last == false -%},{%- endif -%}
+  {%- endfor -%}
+  ]
+}

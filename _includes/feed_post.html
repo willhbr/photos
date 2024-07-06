@@ -1,0 +1,10 @@
+{% for image in post.images %}
+  <p>
+    <img src="{{ "/photos/" | append: image.file }}" loading="lazy">
+  </p>
+  <p>
+    {% include photo_metadata.html %}
+  </p>
+{% endfor %}
+
+{{ post.content }}

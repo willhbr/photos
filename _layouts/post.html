@@ -1,0 +1,25 @@
+---
+layout: page
+---
+
+{% assign post=page %}
+{% include post.html %}
+
+<div class="post-footer">
+  <p>
+    {% if page.next.url %}
+      <a href="{{ page.next.url }}">&larr;&nbsp;Next</a>
+    {% endif %}
+    {% assign st = site.time | date: "%s" | divided_by: 86400 %}
+    {% assign random = page.date | date: "%s" | divided_by: 86400 | plus: st | modulo: site.posts.size %}
+    {% assign url = site.posts[random].url %}
+    {% if page.next.url %}|{% endif %}
+    {% if url != post.url %}
+      <a href="{{ url }}">Random</a>
+      {% if page.previous.url %}|{% endif %}
+    {% endif %}
+    {% if page.previous.url %}
+      <a href="{{ page.previous.url }}">Previous&nbsp;&rarr;</a>
+    {% endif %}
+  </p>
+</div>

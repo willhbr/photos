@@ -1,0 +1,36 @@
+defaults:
+  build: website
+  run: website
+
+images:
+  website:
+    tag: photos-website:latest
+    from: Containerfile.dev
+
+containers:
+  website:
+    name: photos-website
+    image: photos-website:latest
+    bind_mounts:
+      .: /src
+    ports:
+      4300: 4000
+    interactive: true
+    autoremove: true
+    args:
+      - --future
+
+  publish:
+    name: publish
+    image: photos-website:latest
+    bind_mounts:
+      scripts/publish.rb: /bin/publish.rb
+      _drafts: /drafts
+      _posts: /posts
+      photos: /photos
+    interactive: true
+    autoremove: true
+    run_flags:
+      entrypoint:
+        - ruby
+        - /bin/publish.rb

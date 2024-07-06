@@ -1,0 +1,26 @@
+---
+layout: page
+---
+
+<h1>All Posts</h1>
+
+{% assign posts_by_year = site.posts | group_by_exp:"post", "post.date | date: '%Y'"  %}
+{% for year_posts in posts_by_year %}
+  <h2>{{ year_posts.name }}</h2>
+  <ul>
+    {% for post in year_posts.items %}
+      <li>
+        {% if post.location %}
+          <a href="{{ post.url }}">{{ post.location }}</a>
+          {{ post.date | date: site.date_format }}
+          {% if post.images.size > 1 %}
+            &bull; {{ post.images.size }} photos
+          {% endif %}
+        {% else %}
+          <a href="{{ post.url }}">{{ post.date | date: site.date_format }}</a>
+          {% if post.images.size > 1 %} &bull; {{ post.images.size }} photos {% endif %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}

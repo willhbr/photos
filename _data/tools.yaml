@@ -1,0 +1,38 @@
+# Cameras
+iphone15:
+  name: "iPhone 15 Pro"
+  link: /gear/iphone_15
+tg6:
+  name: "Olympus TG 6"
+  link: /gear/olympus_tg6/
+  retired: true
+a6500:
+  name: "Sony a6500"
+  link: /gear/sony_a6500/
+a6000:
+  name: "Sony a6000"
+  link: /gear/sony_a6000/
+  retired: true
+mini3:
+  name: "DJI Mini 3 Pro"
+  link: /gear/dji_mini_3_pro/
+mini2:
+  name: "DJI Mini 2"
+  link: /gear/dji_mini_2
+  retired: true
+# Lenses
+sony1650:
+  name: "Sony 16-50mm f3.5-5.6"
+  link: /gear/sony_16_50/
+sony105:
+  name: "Sony G 18-105mm f4"
+  link: /gear/sony_18_105/
+samyang12:
+  name: "Samyang 12mm f2"
+  link: /gear/samyang_12/
+yashica:
+  name: "Yashica 135mm f2.8"
+  link: /gear/yashica/
+sigma30:
+  name: "Sigma 30mm f1.4"
+  link: /gear/sigma_30/
