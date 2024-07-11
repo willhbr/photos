@@ -13,8 +13,7 @@
     {% for post in site.posts limit:20 %}
       <item>
         <title>
-          {%- if post.location -%}{{ post.location | xml_escape }} •{%- endif -%}
-          {{ post.date | date: site.date_format | xml_escape }}
+          {%- if post.location -%}{{ post.location | xml_escape }} • {% endif -%}{{ post.date | date: site.date_format | xml_escape }}
         </title>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.url }}</link>
