@@ -44,6 +44,5 @@ collections:
   gear:
     output: true
 
-
 sass:
   style: compressed

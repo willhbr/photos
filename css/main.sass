@@ -4,11 +4,12 @@
 $background-colour: #111112
 $metadata-colour: #97999d
 $link-colour: #D4B3FF
+$header-fonts: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif
 
 body
   background-color: $background-colour
   color: #eee
-  font-family: "Helvetica Neue", sans-serif
+  font-family: system-ui, sans-serif
 
 a, a:visited
   color: $link-colour
@@ -16,6 +17,11 @@ a, a:visited
 a:hover
   color: lighten($link-colour, 10%)
   text-decoration: underline
+
+h1, h2
+  font-family: $header-fonts
+  font-weight: normal
+  font-variant-caps: small-caps
 
 header
   h1 a, h1 a:visited
@@ -34,7 +40,6 @@ header
   margin-bottom: 1em
   h1
     font-size: 2em
-    text-transform: uppercase
     margin-block-end: 0
     .sub
       font-size: 0.9rem
