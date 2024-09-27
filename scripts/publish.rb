@@ -70,21 +70,21 @@ inputs.each do |path|
   ratio = nil
   width = exif['exif:PixelXDimension'].to_i
   height = exif['exif:PixelYDimension'].to_i
-  ratio = "#{width}/#{height}"if width && height
+  ratio = "#{width}/#{height}" if width && height
 
   output = "#{date}-#{hash}.jpeg"
   body = """\
 ---
 images:
-  - file: #{output}
+- file: #{output}
 """
 
-  body += "    aperture: #{aperture}\n" if aperture
-  body += "    shutter: #{shutter}\n" if shutter
-  body += "    lens: #{lens}\n" if lens
-  body += "    focal: #{focal}\n" if focal
-  body += "    camera: #{camera}\n" if camera
-  body += "    ratio: #{ratio}\n" if ratio
+  body += "  aperture: #{aperture}\n" if aperture
+  body += "  shutter: #{shutter}\n" if shutter
+  body += "  lens: #{lens}\n" if lens
+  body += "  focal: #{focal}\n" if focal
+  body += "  camera: #{camera}\n" if camera
+  body += "  ratio: #{ratio}\n" if ratio
   body += '---'
 
   start = Time.now
