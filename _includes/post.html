@@ -19,7 +19,11 @@
   </div>
   {% for image in post.images %}
     <div class="img-container">
-      <img src="{{ "/photos/" | append: image.file | absoluteurl }}" loading="lazy">
+      <img src="{{ "/photos/" | append: image.file | absoluteurl }}"
+        loading="lazy"
+        {% if image.ratio %}
+          style="aspect-ratio: auto {{ image.ratio }}"
+        {% endif %}>
       <p>
         {% include photo_metadata.html %}
       </p>

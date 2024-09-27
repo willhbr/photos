@@ -67,6 +67,11 @@ inputs.each do |path|
     date = Date.today.strftime('%F')
   end
 
+  ratio = nil
+  width = exif['exif:PixelXDimension'].to_i
+  height = exif['exif:PixelYDimension'].to_i
+  ratio = "#{width}/#{height}"if width && height
+
   output = "#{date}-#{hash}.jpeg"
   body = """\
 ---
@@ -79,6 +84,7 @@ images:
   body += "    lens: #{lens}\n" if lens
   body += "    focal: #{focal}\n" if focal
   body += "    camera: #{camera}\n" if camera
+  body += "    ratio: #{ratio}\n" if ratio
   body += '---'
 
   start = Time.now
