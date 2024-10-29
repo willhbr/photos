@@ -3,6 +3,7 @@ author: Will Richardson
 description: Will's photos
 baseurl: ""
 url: "https://photography.willhbr.net"
+mastodon: '@willhbr@ruby.social'
 
 image_date: "%F.jpeg"
 date_format: "%B %-d, %Y"
