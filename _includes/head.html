@@ -15,7 +15,7 @@
 
 <meta name="description" content="{{ page_description }}" />
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}"/>
-<a rel="me" href="{{ site.urls.mastodon }}"></a>
+<a rel="me" href="{{ site.mastodon }}"></a>
 
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.feeds.rss_url | absolute_url }}" />
 <link rel="alternate" type="application/feed+json" title="{{ site.title }}" href="{{ site.feeds.json_url | absolute_url }}" />
@@ -24,3 +24,7 @@
 <meta property="og:type" content="{{ page.type }}" />
 <meta property="og:image" content="{{ page.images[0].file | prepend: '/photos/' | absolute_url }}" />
 <meta name="fediverse:creator" content="{{ site.mastodon }}" />
+{% if page.type == 'article' %}
+  {% assign date = page.date %}
+  <meta property="article:published_time" content="{% include smart_date format='%FT%T%:z' %}">
+{%- endif -%}

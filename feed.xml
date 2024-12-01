@@ -15,7 +15,8 @@
         <title>
           {%- if post.location -%}{{ post.location | xml_escape }} • {% endif -%}{{ post.date | date: site.date_format | xml_escape }}
         </title>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        {%- capture smart_date -%}{% assign date = post.date %}{% include smart_date format='%c' %}{% endcapture %}
+        <pubDate>{{ smart_date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.url }}</link>
         <guid isPermaLink="true">{{ post.url | prepend: site.url }}</guid>
         <description>

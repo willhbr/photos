@@ -21,8 +21,9 @@ layout: null
       "content_html": {{ content | jsonify }},
       "url": "{{ post.url | absolute_url }}",
       {%- if post.images.size > 1 -%}"image": {{ post.images[0].file | prepend: "/photos/" | absolute_url | jsonify }},{%- endif -%}
-      "date_published": "{{ post.date | date_to_xmlschema }}",
-      "date_modified": "{{ post.date | date_to_xmlschema }}",
+      {%- capture smart_date -%}{% assign date = post.date %}{% include smart_date format='%c' %}{% endcapture %}
+      "date_published": "{{ smart_date | date_to_xmlschema  }}",
+      "date_modified": "{{ smart_date | date_to_xmlschema  }}",
       "authors": [{"name":{% if post.author %}"{{ post.author }}"{% else %}"{{ site.author }}"{% endif %}}]
     }{%- if forloop.last == false -%},{%- endif -%}
   {%- endfor -%}
