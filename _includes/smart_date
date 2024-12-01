@@ -1,0 +1,14 @@
+{% comment %}
+This allows me to not bother putting times on posts, but still have a
+semi-accurate initial publish time in feeds. The time will be the latest site
+build time if it's on the same day as the post publish date, otherwise it'll be
+the normal publish date (at midnight).
+{% endcomment %}
+
+{%- assign page_date = date | date: '%F' -%}
+{%- assign site_date = site.time | date: '%F' -%}
+{%- if page_date == site_date -%}
+  {{ site.time | date: include.format }}
+{%- else -%}
+  {{ date | date: include.format }}
+{%- endif -%}
