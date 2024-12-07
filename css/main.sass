@@ -3,7 +3,7 @@
 
 $background-colour: #111112
 $metadata-colour: #97999d
-$link-colour: #D4B3FF
+$link-colour: white
 $header-fonts: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif
 
 body
@@ -15,7 +15,7 @@ a, a:visited
   color: $link-colour
   text-decoration: none
 a:hover
-  color: lighten($link-colour, 10%)
+  color: darken($link-colour, 20%)
   text-decoration: underline
 
 h1, h2
@@ -32,7 +32,7 @@ header
     color: $metadata-colour
 
 .container
-  max-width: 700px
+  max-width: 43em
   margin: auto
 
 .metadata
@@ -42,7 +42,7 @@ header
     margin-block-end: 0
     text-transform: uppercase
     .sub
-      font-size: 0.9rem
+      font-size: 0.6em
     a, a:visited
       color: lighten($metadata-colour, 30%)
       text-decoration: none
@@ -76,7 +76,7 @@ img
   max-height: 80vh
   margin: auto
   display: block
-  border-radius: 5px
+  border-radius: 0.3em
 
 .button
   padding: 6px 8px
