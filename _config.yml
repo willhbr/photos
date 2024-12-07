@@ -4,6 +4,7 @@ description: Will's photos
 baseurl: ""
 url: "https://photography.willhbr.net"
 mastodon: '@willhbr@ruby.social'
+mastodon_url: 'https://ruby.social/@willhbr'
 
 image_date: "%F.jpeg"
 date_format: "%B %-d, %Y"
