@@ -1,7 +1,6 @@
 require 'date'
 require 'digest/sha1'
 
-
 tools = {
   'E PZ 18-105mm F4 G OSS' => 'sony105',
   'ILCE-6500' => 'a6500',
@@ -12,12 +11,13 @@ tools = {
   '----' => 'samyang12',
 }
 
-OUTPUT = '/posts'
+OUTPUT = '_posts'
 
-Dir.chdir '/drafts'
+find_date = ARGV[0] != 'today'
 
-inputs = Dir['*'].shuffle
+inputs = Dir['_drafts/*'].shuffle
 done = 0
+images = Hash.new
 inputs.each do |path|
   done += 1
   hash = Digest::SHA1.hexdigest(path)[0..5]
@@ -58,8 +58,12 @@ inputs.each do |path|
   end
 
   begin
-    date = Date.parse((exif['xmp:CreateDate'] || exif['exif:DateTime']
-                      ).gsub(':', '/')).strftime('%F')
+    if find_date
+      date = Date.parse((exif['xmp:CreateDate'] || exif['exif:DateTime']
+                        ).gsub(':', '/')).strftime('%F')
+    else
+      date = Date.today.strftime('%F')
+    end
   rescue Exception => ex
     puts ex
     puts "Error parsing date for #{path}"
@@ -74,8 +78,6 @@ inputs.each do |path|
 
   output = "#{date}-#{hash}.jpeg"
   body = """\
----
-images:
 - file: #{output}
 """
 
@@ -85,12 +87,22 @@ images:
   body += "  focal: #{focal}\n" if focal
   body += "  camera: #{camera}\n" if camera
   body += "  ratio: #{ratio}\n" if ratio
-  body += '---'
 
   start = Time.now
-  system 'convert', path, '-resize', "#{1200 * 1200}@", '-quality', '60', '-strip', "/photos/#{output}"
-  File.write("#{OUTPUT}/#{date}-#{hash}.md", body)
+  system 'convert', path, '-resize', "#{1200 * 1200}@", '-quality', '60', '-strip', "photos/#{output}"
+
   puts "Wrote #{path} in #{Time.now - start} seconds"
-  puts "Done #{done} of #{inputs.size} (#{(done.to_f / inputs.size * 100).round(0)}%)"
+  (images[date] ||= []) << body.strip
 end
 
+images.each do |date, bodies|
+  output = """\
+---
+location: ???
+images:
+#{bodies.join("\n")}
+---
+  """
+
+  File.write("#{OUTPUT}/#{date}-imgs.md", output)
+end
