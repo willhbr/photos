@@ -22,7 +22,11 @@
 
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}" />
 <meta property="og:type" content="{{ page.type }}" />
-<meta property="og:image" content="{{ page.images[0].file | prepend: '/photos/' | absolute_url }}" />
+{% assign image = page.images[0].file %}
+{% unless image %}
+  {% assign image = site.posts[0].images[0].file %}
+{% endunless %}
+<meta property="og:image" content="{{ image | prepend: '/photos/' | absolute_url }}" />
 <meta name="fediverse:creator" content="{{ site.mastodon }}" />
 {% if page.type == 'article' %}
   {% assign date = page.date %}
