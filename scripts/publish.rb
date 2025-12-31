@@ -76,7 +76,7 @@ inputs.each do |path|
   height = exif['exif:PixelYDimension'].to_i
   ratio = "#{width}/#{height}" if width && height
 
-  output = "#{date}-#{hash}.jpeg"
+  output = "#{date}-#{hash}.webp"
   body = """\
 - file: #{output}
 """
