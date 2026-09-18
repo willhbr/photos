@@ -1,7 +1,7 @@
 # Cameras
-iphone15:
-  name: "iPhone 15 Pro"
-  link: /gear/iphone_15/
+iphone18:
+  name: "iPhone 18 Pro"
+  link: /gear/iphone_18/
 tg6:
   name: "Olympus TG 6"
   link: /gear/olympus_tg6/
@@ -20,16 +20,21 @@ mini2:
   name: "DJI Mini 2"
   link: /gear/dji_mini_2/
   retired: true
+iphone15:
+  name: "iPhone 15 Pro"
+  link: /gear/iphone_15/
+  retired: true
+
 # Lenses
-iphone15wide:
+iphone18wide:
   name: "wide lens"
-  link: /gear/iphone_15/
-iphone15main:
+  link: /gear/iphone_18/
+iphone18main:
   name: "main lens"
-  link: /gear/iphone_15/
-iphone15tele:
+  link: /gear/iphone_18/
+iphone18tele:
   name: "telephoto lens"
-  link: /gear/iphone_15/
+  link: /gear/iphone_18/
 sony1650:
   name: "Sony 16-50mm f3.5-5.6"
   link: /gear/sony_16_50/
@@ -45,3 +50,15 @@ yashica:
 sigma30:
   name: "Sigma 30mm f1.4"
   link: /gear/sigma_30/
+iphone15wide:
+  name: "wide lens"
+  link: /gear/iphone_15/
+  retired: true
+iphone15main:
+  name: "main lens"
+  link: /gear/iphone_15/
+  retired: true
+iphone15tele:
+  name: "telephoto lens"
+  link: /gear/iphone_15/
+  retired: true
