@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'github-pages'
+gem 'jekyll', '~> 4.4'
+gem 'kramdown'
+gem 'jekyll-paginate'
 gem 'webrick'
+gem 'logger'

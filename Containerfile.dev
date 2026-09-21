@@ -1,7 +1,0 @@
-FROM docker.io/library/ruby:3.4.9-alpine3.22
-RUN apk add g++ musl-dev make libstdc++ imagemagick imagemagick-jpeg tzdata
-WORKDIR /src
-COPY Gemfile .
-RUN bundle install
-EXPOSE 4300
-ENTRYPOINT ["bundle", "exec", "jekyll", "serve", "--host=0", "-w"]

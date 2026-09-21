@@ -6,7 +6,7 @@ defaults:
 images:
   website:
     tag: photos-website:latest
-    from: Containerfile.dev
+    from: Containerfile
 
 development:
   website:

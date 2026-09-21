@@ -9,7 +9,7 @@ mastodon_url: 'https://ruby.social/@willhbr'
 date_format: "%B %-d, %Y"
 timezone: Australia/Sydney
 
-paginate: 15
+paginate: 13
 paginate_path: "/page/:num"
 plugins: [jekyll-paginate]
 
