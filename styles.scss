@@ -3,25 +3,27 @@
 
 @use 'sass:color';
 
-$background-color: #111112;
-$metadata-color: #97999d;
-$link-color: #ffffff;
+$background-colour: #141414;
+$metadata-colour: #8f8f8f;
+$link-colour: white;
+$text-colour: #eee;
+
 $header-fonts: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 
 body {
-  background-color: $background-color;
-  color: #eee;
+  background-color: $background-colour;
+  color: $text-colour;
   font-family: system-ui, sans-serif;
 }
 
 a {
   &, &:visited {
-    color: $link-color;
+    color: $link-colour;
     text-decoration: none;
   }
 
   &:hover {
-    color: color.adjust($link-color, $lightness: -20%);
+    color: color.adjust($link-colour, $lightness: -20%);
     text-decoration: underline;
   }
 }
@@ -36,7 +38,7 @@ header {
 
   h1 {
     a, a:visited {
-      color: #ffffff;
+      color: $link-colour;
     }
   }
 
@@ -45,7 +47,7 @@ header {
   }
 
   .subhead {
-    color: $metadata-color;
+    color: $metadata-colour;
   }
 }
 
@@ -58,16 +60,17 @@ header {
   margin-bottom: 1em;
 
   h1 {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-block-end: 0;
     text-transform: uppercase;
+    text-wrap: balance;
 
     .sub {
       font-size: 0.6em;
     }
 
     a, a:visited {
-      color: color.adjust($metadata-color, $lightness: 30%);
+      color: color.adjust($metadata-colour, $lightness: 30%);
       text-decoration: none;
     }
 
@@ -79,7 +82,7 @@ header {
   h2 {
     margin-block-start: 0;
     font-size: 1em;
-    color: $metadata-color;
+    color: $metadata-colour;
   }
 }
 
@@ -96,11 +99,11 @@ article {
 
   p {
     text-align: center;
-    color: $metadata-color;
+    color: $metadata-colour;
     font-style: italic;
 
     a, a:visited {
-      color: $metadata-color;
+      color: $metadata-colour;
       text-decoration: none;
     }
 
@@ -123,18 +126,18 @@ img {
   line-height: 1.5;
   border-radius: 3px;
   background: transparent;
-  color: $link-color;
+  color: $link-colour;
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
-}
+}u
 
 .pagination {
   text-align: center;
 
   .button.current {
-    background: $link-color;
-    color: $background-color;
+    background: $link-colour;
+    color: $background-colour;
   }
 }
 
@@ -144,6 +147,6 @@ footer {
   text-align: center;
 
   &, a {
-    color: $metadata-color;
+    color: $metadata-colour;
   }
 }

@@ -1,11 +1,11 @@
 <meta charset="utf-8" />
-{% if page.location %}
 <title>
+{% if page.location %}
   {{ page.location }} &bull; {{ page.date | date: site.date_format }}
-</title>
 {% else %}
-  <title>{{ site.title }}</title>
+  {{ site.title }}
 {% endif %}
+</title>
 <link rel="stylesheet" href="/styles.css" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -29,6 +29,5 @@
 <meta property="og:image" content="{{ image | prepend: '/photos/' | absolute_url }}" />
 <meta name="fediverse:creator" content="{{ site.mastodon }}" />
 {% if page.type == 'article' %}
-  {% assign date = page.date %}
-  <meta property="article:published_time" content="{% include smart_date format='%FT%T%:z' %}">
+  <meta property="article:published_time" content="{{ page.date | smart_date | date: '%FT%T%:z' }}">
 {%- endif -%}
